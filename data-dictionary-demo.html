@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data Dictionary Demo · 同一個 prompt，兩個 Agentic IDE</title>
+<style>
+  html,body{margin:0;height:100%;background:#000;font-family:'IBM Plex Sans','Noto Sans TC',system-ui,sans-serif}
+  .wrap{position:relative;height:100%;display:flex;align-items:center;justify-content:center}
+  video{max-width:100%;max-height:100%}
+  .corner{position:fixed;top:16px;right:16px;z-index:5;font-size:14px;letter-spacing:.3px;color:#a6c8ff;text-decoration:none;border:1px solid rgba(166,200,255,.4);padding:8px 14px;border-radius:999px;background:rgba(0,0,0,.45);transition:background .15s ease}
+  .corner:hover{background:rgba(15,98,254,.35)}
+  .end{position:fixed;inset:0;display:none;align-items:center;justify-content:center;flex-direction:column;gap:22px;background:rgba(0,0,0,.82);z-index:10}
+  .end.show{display:flex}
+  .end .msg{font-size:17px;color:#c6c6c6;letter-spacing:.5px}
+  .cta{font-size:22px;font-weight:600;color:#fff;background:#0f62fe;padding:16px 32px;border-radius:999px;text-decoration:none;box-shadow:0 6px 24px rgba(15,98,254,.45);transition:background .15s ease}
+  .cta:hover{background:#0043ce}
+  .replay{font-size:15px;color:#c6c6c6;background:none;border:1px solid #6f6f6f;padding:9px 18px;border-radius:999px;cursor:pointer}
+  .replay:hover{color:#fff;border-color:#a8a8a8}
+</style>
+</head>
+<body>
+<div class="wrap"><video id="v" src="data-dictionary-demo.mp4" controls autoplay playsinline></video></div>
+<a class="corner" href="BATCH02-對照分析.html">BATCH02 對照分析 ↗</a>
+<div class="end" id="end">
+  <div class="msg">兩邊的完整回答逐段對照——</div>
+  <a class="cta" href="BATCH02-對照分析.html">開啟 BATCH02 對照分析 →</a>
+  <button class="replay" id="replay">重播影片</button>
+</div>
+<script>
+  var v=document.getElementById('v'),end=document.getElementById('end');
+  v.addEventListener('ended',function(){end.classList.add('show')});
+  document.getElementById('replay').addEventListener('click',function(){end.classList.remove('show');v.currentTime=0;v.play()});
+</script>
+</body>
+</html>
